@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,7 @@ import { EditarticleComponent } from './application/editarticle/editarticle.comp
 import { AjoutarticleComponent } from './application/ajoutarticle/ajoutarticle.component';
 import { RechercherarticleComponent } from './application/rechercherarticle/rechercherarticle.component';
 import { MenuComponent } from './application/menu/menu.component';
+import { GarantPipe } from './garant.pipe';
 
 @NgModule({
   declarations: [
@@ -24,10 +27,12 @@ import { MenuComponent } from './application/menu/menu.component';
     EditarticleComponent,
     AjoutarticleComponent,
     RechercherarticleComponent,
-    MenuComponent
+    MenuComponent,
+    GarantPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
