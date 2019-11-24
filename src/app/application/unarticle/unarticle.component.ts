@@ -35,5 +35,9 @@ export class UnarticleComponent implements OnInit {
     this.matricule = this.activatedRoute.snapshot.params['matricule'];
     this.obj=this.dataService.getEmployeByMatriculeServ(this.matricule);
   }
+  onArticles()
+  {
+  this.router.navigate(['/articles']);
+  }
 
 }

@@ -58,9 +58,9 @@ export class DataService {
     
     editerArticleServ(matriculeo:number,matricule:number,libelle:String,marque:String,photo:String,prix:number,enstock:boolean)
     {
+      console.log("yeah");
 
       let obj:Article=this.getEmployeByMatriculeServ(matriculeo);
-      
 
       
       if(matricule>=100 && matricule<1000)
