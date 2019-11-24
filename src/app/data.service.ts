@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from './User'
-import { Article } from './Article';
+import { Article } from './article';
 
 
 @Injectable({

@@ -2,13 +2,13 @@
 export class Article
 {
 
-   private _matricule: number;
-   private _libelle:String;
-   private _marque:String;
-   private _photo:String;
-   private _prix: number;
-   private _dateFabrication: Date;
-   private _enstock: boolean;
+    _matricule: number;
+    _libelle:String;
+    _marque:String;
+    _photo:String;
+    _prix: number;
+    _dateFabrication: Date;
+    _enstock: boolean;
 
 
 
