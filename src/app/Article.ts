@@ -3,12 +3,26 @@ export class Article
 {
 
    private _matricule: number;
-   private _libelle: string;
-   private _marque: string;
-   private _photo: string;
+   private _libelle:String;
+   private _marque:String;
+   private _photo:String;
    private _prix: number;
    private _dateFabrication: Date;
    private _enstock: boolean;
+
+
+
+   constructor(matricule:number,libelle:String,marque:String,photo:String,prix:number,dateFabrication:Date,enstock:boolean)
+  {
+    this._matricule =matricule;
+    this._libelle =libelle ;
+    this._marque =marque ;
+    this._photo = photo;
+    this._prix = prix;
+    this._dateFabrication = dateFabrication;
+    this._enstock = enstock;
+
+  }
 
   public get matricule(): number {
     return this._matricule;
@@ -16,22 +30,22 @@ export class Article
   public set matricule(value: number) {
     this._matricule = value;
   }
-  public get libelle(): string {
+  public get libelle():String {
     return this._libelle;
   }
-  public set libelle(value: string) {
+  public set libelle(value:String) {
     this._libelle = value;
   }
-  public get marque(): string {
+  public get marque():String {
     return this._marque;
   }
-  public set marque(value: string) {
+  public set marque(value:String) {
     this._marque = value;
   }
-  public get photo(): string {
+  public get photo():String {
     return this._photo;
   }
-  public set photo(value: string) {
+  public set photo(value:String) {
     this._photo = value;
   }
   public get prix(): number {
@@ -58,17 +72,7 @@ export class Article
 
   
 
-  constructor(matricule:number ,libelle:string,marque:String,photo:string,prix:number,dateFabrication:Date,enstock:boolean)
-  {
-    this._matricule =matricule;
-    this._libelle =libelle ;
-    this._marque =marque ;
-    this._photo = photo;
-    this._prix = prix;
-    this._dateFabrication = dateFabrication;
-    this._enstock = enstock;
-
-  }
+  
 
 
 }

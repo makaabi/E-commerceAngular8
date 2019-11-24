@@ -23,9 +23,9 @@ export class DataService {
     new Article(204,'V214A','HP','../assets/4.jpg',329,new Date(2017, 10, 2),true),
     new Article(205,'S2319H','Dell','../assets/5.jpg',459,new Date(2016, 1, 15),false),
     new Article(206,'Samsung 27','Samsung','../assets/6.jpg',1579,new Date(2014, 5, 21),true)
-
     
     ];
+
     getEmployeByMatriculeServ(matricule : number):Article
     {
       var i:number;
@@ -56,7 +56,7 @@ export class DataService {
       this.lesArticles.push(obj); 
     }
     
-    editerArticleServ(matriculeo:number,matricule:number,libelle:string,marque:string,photo:string,prix:number,enstock:boolean)
+    editerArticleServ(matriculeo:number,matricule:number,libelle:String,marque:String,photo:String,prix:number,enstock:boolean)
     {
 
       let obj:Article=this.getEmployeByMatriculeServ(matriculeo);
