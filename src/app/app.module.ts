@@ -11,6 +11,7 @@ import { UnarticleComponent } from './application/unarticle/unarticle.component'
 import { EditarticleComponent } from './application/editarticle/editarticle.component';
 import { AjoutarticleComponent } from './application/ajoutarticle/ajoutarticle.component';
 import { RechercherarticleComponent } from './application/rechercherarticle/rechercherarticle.component';
+import { MenuComponent } from './application/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RechercherarticleComponent } from './application/rechercherarticle/rech
     UnarticleComponent,
     EditarticleComponent,
     AjoutarticleComponent,
-    RechercherarticleComponent
+    RechercherarticleComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

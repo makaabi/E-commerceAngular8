@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-ajoutarticle',
   template: `
+  <app-menu></app-menu>
     <p>
       ajoutarticle works!
     </p>
