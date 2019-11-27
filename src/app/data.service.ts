@@ -58,7 +58,6 @@ export class DataService {
     
     editerArticleServ(matriculeo:number,matricule:number,libelle:String,marque:String,photo:String,prix:number,enstock:boolean)
     {
-      console.log("yeah");
 
       let obj:Article=this.getEmployeByMatriculeServ(matriculeo);
 
@@ -84,6 +83,12 @@ export class DataService {
 
      
     }
+    lastmatServ():number
+    {
+      return this.lesArticles[this.lesArticles.length-1].matricule+1;
+
+    }
+    
 
 
 

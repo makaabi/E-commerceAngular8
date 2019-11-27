@@ -16,10 +16,7 @@ import { Article } from '../../article';
           <h3 class="mb-0">Ajout Article</h3>
         </div>
         <div class="card-body">
-            <div class="form-group">
-              <label>matricule</label>
-              <input type="text" [(ngModel)]="matricule"  class="form-control rounded-0" >
-            </div>
+          
             <div class="form-group">
               <label>libelle</label>
               <input type="text" [(ngModel)]="libelle"  class="form-control rounded-0"  >
@@ -54,7 +51,6 @@ import { Article } from '../../article';
   styles: []
 })
 export class AjoutarticleComponent implements OnInit {
-  matricule:number;
   libelle:string;
   marque:string;
   photo:string;
@@ -71,9 +67,11 @@ export class AjoutarticleComponent implements OnInit {
 
   ajoutearticles()
   {
+    var  matricule:number=this.dataService.lastmatServ();
+
     var dateArr = this.datefab.split("-");
 
-    this.obj=new Article(this.matricule,this.libelle,this.marque,this.photo,this.prix,new Date(parseInt(dateArr[0]),parseInt(dateArr[1])-1,parseInt(dateArr[2])),this.enstock);
+    this.obj=new Article(matricule,this.libelle,this.marque,this.photo,this.prix,new Date(parseInt(dateArr[0]),parseInt(dateArr[1])-1,parseInt(dateArr[2])),this.enstock);
     this.dataService.ajoutArticleServ(this.obj);
     this.router.navigate(['/articles']); 
 
