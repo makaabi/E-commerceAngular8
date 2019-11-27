@@ -20,6 +20,9 @@ import {Router, ActivatedRoute} from '@angular/router';
               <label>matricule originale</label>
               <input type="text" [(ngModel)]="matriculeo"  placeholder="obligatoire"  class="form-control rounded-0" >
             </div>
+            <div [hidden] ="!submitted" class="alert alert-danger">
+            {{message}}
+            </div>
             <div class="form-group">
               <label>matricule</label>
               <input type="text" [(ngModel)]="matricule"    class="form-control rounded-0" >
@@ -61,6 +64,8 @@ export class EditarticleComponent implements OnInit {
   photo:String="";
   prix:number;
   enstock:boolean;
+  submitted:boolean=false;
+  message:String;
 
   constructor(private dataService:DataService,private router:Router) { }
 
@@ -70,10 +75,16 @@ export class EditarticleComponent implements OnInit {
   editerarticle()
   {
 
-    if(this.matriculeo>=100 &&this.matriculeo<1000)
+    if(this.dataService.getEmployeByMatriculeServ(this.matriculeo)!=null)
+    {
     this.dataService.editerArticleServ(this.matriculeo,this.matricule,this.libelle,this.marque,this.photo,this.prix,this.enstock);
     this.router.navigate(['/articles']);
-
+    }
+    else 
+    {
+      this.message="Le matricule entré n'existe pas !";
+      this.submitted=true;
+    }
 
   }
 

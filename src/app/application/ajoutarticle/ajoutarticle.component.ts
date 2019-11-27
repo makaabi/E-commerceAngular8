@@ -68,12 +68,19 @@ export class AjoutarticleComponent implements OnInit {
   ajoutearticles()
   {
     var  matricule:number=this.dataService.lastmatServ();
-
     var dateArr = this.datefab.split("-");
-
+  
+    if(this.dataService.verifajoutSertv(this.libelle,this.marque,this.photo,this.prix,this.enstock,dateArr))
+    {
+    
     this.obj=new Article(matricule,this.libelle,this.marque,this.photo,this.prix,new Date(parseInt(dateArr[0]),parseInt(dateArr[1])-1,parseInt(dateArr[2])),this.enstock);
     this.dataService.ajoutArticleServ(this.obj);
     this.router.navigate(['/articles']); 
+
+    }
+    
+    
+    
 
 
   }

@@ -89,7 +89,14 @@ export class DataService {
 
     }
     
+    verifajoutSertv(libelle:String,marque:String,photo:String,prix:number,enstock:boolean,dateArr:string[]):boolean
+    {
+      console.log(parseInt(dateArr[2]));
+      return ( (parseInt(dateArr[2])<=31 && parseInt(dateArr[1])<=12  )&&(libelle.length!=0) &&(marque.length!=0)&& (photo.length!=0) && (prix>0 && !isNaN(prix))&& (enstock!=null))
+      
+    }
 
+    
 
 
 
