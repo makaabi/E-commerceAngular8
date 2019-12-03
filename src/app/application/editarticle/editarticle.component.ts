@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../article';
 import {DataService} from '../../data.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+
+
 
 
 @Component({
@@ -16,40 +19,48 @@ import {Router, ActivatedRoute} from '@angular/router';
           <h3 class="mb-0">Editer un Article</h3>
         </div>
         <div class="card-body">
+        <form [formGroup]="modifForm" (ngSubmit)="editerarticle()">
+
         <div class="form-group">
               <label>matricule originale</label>
-              <input type="text" [(ngModel)]="matriculeo"  placeholder="obligatoire"  class="form-control rounded-0" >
+              <input type="text"   placeholder="obligatoire"  class="form-control rounded-0"
+              formControlName="matriculeo" >
             </div>
-            <div [hidden] ="!submitted" class="alert alert-danger">
-            {{message}}
-            </div>
+            
             <div class="form-group">
               <label>matricule</label>
-              <input type="text" [(ngModel)]="matricule"    class="form-control rounded-0" >
+              <input type="text"     class="form-control rounded-0" 
+              formControlName="matricule">
             </div>
             <div class="form-group">
               <label>libelle</label>
-              <input type="text" [(ngModel)]="libelle"  class="form-control rounded-0"  >
+              <input type="text"   class="form-control rounded-0"
+              formControlName="libelle"  >
             </div>
             <div class="form-group">
               <label>marque</label>
-              <input type="text" [(ngModel)]="marque"  class="form-control rounded-0" >
+              <input type="text"   class="form-control rounded-0"
+              formControlName="marque" >
             </div>
             <div class="form-group">
               <label>photo lien</label>
-              <input type="text" [(ngModel)]="photo"  class="form-control rounded-0" >
+              <input type="text"   class="form-control rounded-0"
+              formControlName="photo" >
             </div>
             <div class="form-group">
               <label>prix</label>
-              <input type="text" [(ngModel)]="prix"  class="form-control rounded-0" >
+              <input type="text"  class="form-control rounded-0"
+              formControlName="prix" >
             </div>
             <div class="form-group">
               <label>enstock</label>
-              <input type="text" [(ngModel)]="enstock"   placeholder="True or False" class="form-control rounded-0" >
+              <input type="text"    placeholder="True or False" class="form-control rounded-0" 
+              formControlName="enstock">
             </div>
-            <button type="button"  class="btn btn-warning float-right" (click)="editerarticle()">Editer</button>
+            <button type="submit"  class="btn btn-warning float-right" >Editer</button>
             <button type="button"  class="btn btn-danger " (click)="versArticlesr()" >Annuler</button>
-            
+            </form>
+
         </div>
       </div>
     </div>
@@ -57,6 +68,8 @@ import {Router, ActivatedRoute} from '@angular/router';
   styles: []
 })
 export class EditarticleComponent implements OnInit {
+  modifForm: FormGroup;
+/*
   matriculeo:number;
   matricule:number;
   libelle:String="";
@@ -64,27 +77,47 @@ export class EditarticleComponent implements OnInit {
   photo:String="";
   prix:number;
   enstock:boolean;
-  submitted:boolean=false;
-  message:String;
+  */
 
-  constructor(private dataService:DataService,private router:Router) { }
+
+  constructor(private dataService:DataService,private router:Router,private formBuilder:FormBuilder) { }
 
   ngOnInit() {
+    this.modifForm = this.formBuilder.group(
+      {
+      matriculeo:['', [Validators.required,Validators.minLength(3)]],
+      matricule: [''],
+      libelle:[''],
+      marque: [''],
+      photo: [''],
+      prix: [],
+      datefab:[''],
+      enstock:[],
+      }
+      )
   }
 
   editerarticle()
   {
 
-    if(this.dataService.getEmployeByMatriculeServ(this.matriculeo)!=null)
+    if(this.dataService.getEmployeByMatriculeServ(this.modifForm.value['matriculeo'])!=null)
     {
-    this.dataService.editerArticleServ(this.matriculeo,this.matricule,this.libelle,this.marque,this.photo,this.prix,this.enstock);
+      
+    this.dataService.editerArticleServ
+    (
+      this.modifForm.value['matriculeo'],
+      this.modifForm.value['matricule'],
+      this.modifForm.value['libelle'],
+      this.modifForm.value['marque'],
+      this.modifForm.value['photo'],
+      this.modifForm.value['prix'],
+      this.modifForm.value['enstock'],
+      );
     this.router.navigate(['/articles']);
-    }
-    else 
-    {
-      this.message="Le matricule entré n'existe pas !";
-      this.submitted=true;
-    }
+    
+   
+  }
+  
 
   }
 

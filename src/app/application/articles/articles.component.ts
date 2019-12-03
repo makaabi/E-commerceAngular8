@@ -8,7 +8,7 @@ import { Article } from '../../article';
   <app-menu></app-menu>
     <h2 class="text-center text-danger">Liste Articles</h2>
     <h5 class="ml-2 text-success">Trier</h5>
-    <select [(ngModel)]="choix" class="ml-2 bg-danger" (change)="sortList(choix)" >
+    <select [(ngModel)]="choix" class="ml-2 bg-secondary" (change)="sortList(choix)" >
     <option class="text-white"  value="prixasc">par prix ascendant</option>
     <option class="text-white" value="prixdesc">par prix descendant</option>
     <option class="text-white" value="nomasc">par nom ascendant </option>
